@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+{% if request.user.is_authenticated %}
+<h1>
+    hi, {{user|capfirst}}
+</h1>
+
+
+{% else %} 
+sorry not fetch
+{% endif %}
+
+    <h2>GROUP NAME::{{groupname|capfirst}}</h2>
+    {% comment %} </h2>user2 kwargs::{{user2_id|capfirst}}</h2> {% endcomment %}
+
+    <textarea id="chat-log" cols="70" rows="20"></textarea><br>
+    <input type="text" id="chat-message-input" size='70'><br><br>
+    <input type="button" value="send" id='chat-message-submit'>
+    <br>
+    <br>
+        <button  value = submit id='disconnect-button' name='disconnect'>disconnecteddddd </button>
+
+    <a href="{% url 'profile'  %}"> <button class='bor'>Back To Profile</button> </a>
+    
+    {{groupname|json_script:"group-name"}}
+    
+    {% comment %} {{user2_id|json_script:"user2_id"}} {% endcomment %}
+
+
+    <script src="{% static 'app/custom.js' %}"></script>
+</body>
+</html>

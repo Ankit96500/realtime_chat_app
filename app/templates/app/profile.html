@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% comment %} {% load static %} {% endcomment %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% comment %} <link rel="stylesheet" href={% static "app/css/bootstrap.min.css" %}> {% endcomment %}
+    <style>
+        .info{
+            color:red;
+        }
+        table,td,th,tr{
+            border:2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2 align="center"><u>Profile page</u></h2>
+    {% if request.user.is_authenticated %}
+       <h1>
+        hi, {{user|capfirst}}
+       </h1> 
+    {% else %}
+    sorry not fetch
+    {% endif %}
+    
+    <h2> Create Room and Press Start : </h2>
+    <form action="" method="POST" novalidate >
+        {% csrf_token %}
+        {{room.non_field_errors}}
+        {% for room_field in room %}
+        <p>
+            {{room_field.label_tag}}  {{room_field}}
+        </p>
+        {% for error in room_field.errors %}
+        <span class='errorlist'>
+            {{room.non_field_errors| striptags}}
+        </span>
+        {% endfor %} 
+        {% endfor %}
+        <input type="submit" value="start">
+    
+    </form><br>
+    <button>
+        <a href="{% url 'logout' %}">logout</a>
+    </button><br><br>
+    <h2> Click Room You Want To join : </h2>
+    <table>
+        <th>Join Rooms</th>
+        <tr>
+            <td>
+                {% for create in created_rooms  %}
+                
+                <a href="/rm/{{create.slug}}">{{create.room}}</a> <br>
+                
+                {% comment %} another way to write {% endcomment %}
+                {% comment %} <li onclick = "window.location = '/rm/{{create.slug}}'"> {{create.room}}</li> {% endcomment %}
+            {% endfor %} 
+
+        </td>
+    </tr>
+</table>
+
+    
+    
+    {% if messages %}
+    {% for message in messages %}
+    <span {% if message.tags %}class="{{message.tags}}"{% endif %}>{{message}}</span>
+    {% endfor %}
+    {% endif %}
+        
+        {% comment %} <script src="{% static ' app/js/bootstrap.min.js'  %}"></script>
+        <script src="{% static ' app/js/jquery.js'  %}"></script>
+        <script src="{% static ' app/js/popper.js'  %}"></script> {% endcomment %}
+</body>
+</html>

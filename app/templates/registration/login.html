@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .info{
+            color:grey;
+        }
+        .errorlist{
+            color:red;
+            list-style-type: none;
+            font-size:15px;
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <h1>login page..</h1>
+    <hr>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{form.non_field_errors}}
+        {{form.as_p}}
+        <input type="submit" value="submit">
+    </form>
+
+    {% if messages %}
+    {% for message in messages %}
+    <span {% if message.tags %}class="{{message.tags}}"{% endif %}>{{message}}</span>
+    {% endfor %}
+    {% endif %}
+    <br>
+        <a href="{% url 'base' %}"><button> back to home </button> </a>
+
+</body>
+</html>

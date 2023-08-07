@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% comment %} <link rel="stylesheet" href={% static "app/css/bootstrap.min.css" %}> {% endcomment %}
+</head>
+<body>
+
+    <h1 align = "center" ><u>REAL TIME CHAT APPLICATION </u></h1>
+    <h2>
+        <P align = 'center'> HOME PAGE
+        </P>
+    </h2>
+    <div align= "center" >    
+        <img src="{% static  'app/image/home.png ' %}" height= '300' width = '290'>
+    </div>
+    <div align= "center" >    
+        
+        <a href="{% url 'signup'  %}"><input type="button" value="signup"></a>
+        <a href="{% url 'login'  %}"><input type="button" value="login"></a>
+    </div>
+    {% comment %} <a href="{% url 'logout'  %}"><input type="button" value="logout"></a> {% endcomment %}
+    {% if request.user.is_authenticated %}
+    {{username.user}}
+    {% endif%}
+
+    {% comment %} <script src="{% static 'app/js/'bootstrap.min.js %}"></script>
+    <script src="{% static 'app/js/'jquery.js %}"></script>
+    <script src="{% static 'app/js/'popper.js %}"></script> {% endcomment %}
+</body>
+</html>
