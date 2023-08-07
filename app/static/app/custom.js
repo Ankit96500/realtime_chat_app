@@ -75,6 +75,3 @@ console.log(ws.readyState,'<--ready state')
         
     }    
 
-document.getElementById('disconnect-button').onclick()=function () {
-    document.write('you are disconnected..')        
-}
