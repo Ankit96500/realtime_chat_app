@@ -10,6 +10,10 @@
 ## Profile
 ![Annotation 2023-08-07 193425](https://github.com/Ankit96500/realtime_chat_app/assets/107850796/b1090660-8e39-4361-90ec-a93ad4c76102)
 
+## Chats
+![Annotation 2023-08-08 133902](https://github.com/Ankit96500/realtime_chat_app/assets/107850796/00774545-e0fb-44b4-aa89-212f18701d44)
+
+
 ## HOW TO RUN THIS PROJECT
 - Install Python(3.7.6) (Dont Forget to Tick Add to Path while installing Python)
 - Open Terminal and Execute Following Commands :
